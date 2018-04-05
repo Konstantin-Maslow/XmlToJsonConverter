@@ -1,0 +1,136 @@
+{
+	"name": "infras_0",
+	"title": "",
+	"sublayers": [
+		{
+			"name": "BBRQ_копия20170315084719786",
+			"title": "BBRQ copy",
+			"attributes": [
+				{
+					"name": "id",
+					"type": "int"
+				},
+				{
+					"name": "objectid",
+					"type": "qlonglong"
+				},
+				{
+					"name": "код_класси",
+					"type": "QString"
+				},
+				{
+					"name": "наименован",
+					"type": "QString"
+				},
+				{
+					"name": "подпись",
+					"type": "QString"
+				},
+				{
+					"name": "uwi",
+					"type": "double"
+				},
+				{
+					"name": "предприяти",
+					"type": "QString"
+				},
+				{
+					"name": "площадь",
+					"type": "QString"
+				}
+			]
+		},
+		{
+			"name": "VOL_TOPO_20170207161810066",
+			"title": "ТОПО",
+			"attributes": [
+				{
+					"name": "id",
+					"type": "int"
+				},
+				{
+					"name": "OBJECTID",
+					"type": "int"
+				},
+				{
+					"name": "INVENTORY_NUMBER",
+					"type": "QString"
+				},
+				{
+					"name": "CLASSIFIER_NAME",
+					"type": "QString"
+				},
+				{
+					"name": "DOCUMENTATION_STATUS",
+					"type": "int"
+				},
+				{
+					"name": "EXPLOITATION_STATUS",
+					"type": "int"
+				},
+				{
+					"name": "CAPPING_THICKNESS",
+					"type": "QString"
+				},
+				{
+					"name": "DESIGN_UNIT",
+					"type": "int"
+				},
+				{
+					"name": "INVENTORY_CUSTODIAN",
+					"type": "QString"
+				},
+				{
+					"name": "PROJECT_CODE",
+					"type": "QString"
+				},
+				{
+					"name": "INDUSTRIAL_SAFETY_REPORT",
+					"type": "QString"
+				},
+				{
+					"name": "OUTSOURCED_EXPERT_REPORT",
+					"type": "QString"
+				},
+				{
+					"name": "CLASSIFIER_CODE",
+					"type": "QString"
+				}
+			]
+		},
+		{
+			"name": "SIT_ROAD20170221110431376",
+			"title": "Дороги",
+			"attributes": [
+				{
+					"name": "id",
+					"type": "int"
+				},
+				{
+					"name": "OBJECTID",
+					"type": "int"
+				},
+				{
+					"name": "КОД_КЛАССИФИКАТОРА",
+					"type": "QString"
+				},
+				{
+					"name": "НАИМЕНОВАНИЕ",
+					"type": "QString"
+				},
+				{
+					"name": "МАТЕРИАЛ_ПОКРЫТИЯ",
+					"type": "QString"
+				},
+				{
+					"name": "ПОДПИСЬ",
+					"type": "QString"
+				},
+				{
+					"name": "СТАТУС_ОБЪЕКТА",
+					"type": "QString"
+				}
+			]
+		}
+	]
+}

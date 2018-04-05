@@ -1,0 +1,69 @@
+<Capability>
+  <Layer queryable="1">
+    <Name>infras_0</Name>
+    <Layer displayField="id" queryable="1" visible="1">
+      <Name>BBRQ_копия20170315084719786</Name>
+      <Title>BBRQ copy</Title>
+      <Style>
+        <Name>default</Name>
+      </Style>
+      <Attributes>
+        <Attribute precision="0" length="-1" editType="TextEdit" type="int" comment="" name="id" />
+        <Attribute precision="0" length="-1" editType="TextEdit" type="qlonglong" comment="" name="objectid" />
+        <Attribute precision="-1" length="10" editType="TextEdit" alias="Код классификации" type="QString" comment="" name="код_класси" />
+        <Attribute precision="-1" length="100" editType="TextEdit" type="QString" comment="" name="наименован" />
+        <Attribute precision="-1" length="100" editType="TextEdit" type="QString" comment="" name="подпись" />
+        <Attribute precision="-1" length="-1" editType="TextEdit" type="double" comment="" name="uwi" />
+        <Attribute precision="-1" length="100" editType="TextEdit" type="QString" comment="" name="предприяти" />
+        <Attribute precision="-1" length="50" editType="TextEdit" type="QString" comment="" name="площадь" />
+      </Attributes>
+    </Layer>
+    <Layer displayField="SPEC_NAME" visible="1">
+      <Name>VOL_TOPO_20170207161810066</Name>
+      <Title>ТОПО</Title>
+      <BoundingBox CRS="EPSG:4284" maxx="65.0423" minx="63.5674" maxy="80.5105" miny="75.3243" />
+      <Style>
+        <Name>ttp</Name>
+        <Title>ttp</Title>
+        <LegendURL>
+          <Format>image/png</Format>
+        </LegendURL>
+      </Style>
+      <Attributes>
+        <Attribute precision="0" length="-1" editType="TextEdit" type="int" comment="" name="id" />
+        <Attribute precision="0" length="-1" editType="TextEdit" type="int" comment="" name="OBJECTID" />
+        <Attribute precision="-1" length="500" editType="TextEdit" type="QString" comment="" name="INVENTORY_NUMBER" />
+        <Attribute precision="-1" length="500" editType="TextEdit" type="QString" comment="" name="CLASSIFIER_NAME" />
+        <Attribute precision="0" length="-1" editType="TextEdit" type="int" comment="" name="DOCUMENTATION_STATUS" />
+        <Attribute precision="0" length="-1" editType="TextEdit" type="int" comment="" name="EXPLOITATION_STATUS" />
+        <Attribute precision="-1" length="500" editType="TextEdit" type="QString" comment="" name="CAPPING_THICKNESS" />
+        <Attribute precision="0" length="-1" editType="TextEdit" type="int" comment="" name="DESIGN_UNIT" />
+        <Attribute precision="-1" length="500" editType="TextEdit" type="QString" comment="" name="INVENTORY_CUSTODIAN" />
+        <Attribute precision="-1" length="500" editType="TextEdit" type="QString" comment="" name="PROJECT_CODE" />
+        <Attribute precision="-1" length="500" editType="TextEdit" type="QString" comment="" name="INDUSTRIAL_SAFETY_REPORT" />
+        <Attribute precision="-1" length="500" editType="TextEdit" type="QString" comment="" name="OUTSOURCED_EXPERT_REPORT" />
+        <Attribute precision="-1" length="20" editType="TextEdit" type="QString" comment="" name="CLASSIFIER_CODE" />
+      </Attributes>
+    </Layer>
+    <Layer displayField="id" queryable="1" visible="1">
+      <Name>SIT_ROAD20170221110431376</Name>
+      <Title>Дороги</Title>
+      <Style>
+        <Name>default</Name>
+        <Title>default</Title>
+        <LegendURL>
+          <Format>image/png</Format>
+        </LegendURL>
+      </Style>
+      <Attributes>
+        <Attribute precision="0" length="-1" editType="TextEdit" type="int" comment="" name="id" />
+        <Attribute precision="0" length="-1" editType="TextEdit" type="int" comment="" name="OBJECTID" />
+        <Attribute precision="-1" length="20" editType="TextEdit" type="QString" comment="" name="КОД_КЛАССИФИКАТОРА" />
+        <Attribute precision="-1" length="200" editType="TextEdit" type="QString" comment="" name="НАИМЕНОВАНИЕ" />
+        <Attribute precision="-1" length="200" editType="TextEdit" type="QString" comment="" name="МАТЕРИАЛ_ПОКРЫТИЯ" />
+        <Attribute precision="-1" length="200" editType="TextEdit" type="QString" comment="" name="ПОДПИСЬ" />
+        <Attribute precision="-1" length="100" editType="TextEdit" type="QString" comment="" name="СТАТУС_ОБЪЕКТА" />
+      </Attributes>
+    </Layer>
+  </Layer>
+</Capability>

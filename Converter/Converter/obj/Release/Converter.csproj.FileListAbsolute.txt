@@ -1,0 +1,5 @@
+C:\Users\Konstantin\Documents\Практика\Converter\Converter\Converter\bin\Release\Converter.exe.config
+C:\Users\Konstantin\Documents\Практика\Converter\Converter\Converter\bin\Release\Converter.exe
+C:\Users\Konstantin\Documents\Практика\Converter\Converter\Converter\bin\Release\Converter.pdb
+C:\Users\Konstantin\Documents\Практика\Converter\Converter\Converter\obj\Release\Converter.exe
+C:\Users\Konstantin\Documents\Практика\Converter\Converter\Converter\obj\Release\Converter.pdb
