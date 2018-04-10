@@ -34,13 +34,21 @@ namespace Converter
 
             
             XmlToJsonConverter converter = new XmlToJsonConverter();
+            converter.AddRule(new Rule(IsDocument, XmlToJsonConvertFirstChild));
             converter.AddRule(new Rule(IsCapability, XmlToJsonConvertFirstChild));
             converter.AddRule(new Rule(IsLayer, XmlToJsonLayer));
-            XmlNode xmlRootNode = xmlDocument.FirstChild;
-            JsonObject jsonObject = new JsonObject();
-            converter.Convert(xmlRootNode, jsonObject);
+            converter.AddRule(new Rule(IsAttributes, XmlToJsonAttributes));
+            converter.AddRule(new Rule(IsAttribute, XmlToJsonAttribute));
 
+            JsonObject jsonObject = new JsonObject();
+            converter.Convert(xmlDocument, jsonObject);
+            
             File.WriteAllText(jsonPath, jsonObject.GetAsString());
+        }
+
+        static private bool IsDocument(XmlNode xmlNode)
+        {
+            return xmlNode.Name == "#document";
         }
 
         static private bool IsCapability(XmlNode xmlNode)
@@ -53,15 +61,25 @@ namespace Converter
             return xmlNode.Name == "Layer";
         }
 
+        static private bool IsAttributes(XmlNode xmlNode)
+        {
+            return xmlNode.Name == "Attributes";
+        }
+
+        static private bool IsAttribute(XmlNode xmlNode)
+        {
+            return xmlNode.Name == "Attribute";
+        }
+
         static private void XmlToJsonConvertFirstChild(XmlNode xmlNode, JsonNode jsonNode, XmlToJsonConverter converter)
         {
             converter.Convert(xmlNode.FirstChild, jsonNode);
         }
 
-        static private void XmlToJsonLayer(XmlNode xmlNode, JsonNode jsonNode, XmlToJsonConverter converter)
+        static private void XmlToJsonLayer(XmlNode layerNode, JsonNode jsonNode, XmlToJsonConverter converter)
         {
-            XmlNode nameXmlNode = xmlNode.SelectSingleNode("Name");
-            XmlNode titleXmlNode = xmlNode.SelectSingleNode("Title");
+            XmlNode nameXmlNode = layerNode.SelectSingleNode("Name");
+            XmlNode titleXmlNode = layerNode.SelectSingleNode("Title");
 
             string name = nameXmlNode.InnerText;
             string title = "";
@@ -73,16 +91,18 @@ namespace Converter
             jsonNode.Add("name", new JsonValue(name));
             jsonNode.Add("title", new JsonValue(title));
 
-            XmlNodeList sublayersXmlNodes = xmlNode.SelectNodes("Layer");
+            XmlNodeList sublayersXmlNodes = layerNode.SelectNodes("Layer");
             if (sublayersXmlNodes.Count > 0)
             {
                 XmlToJsonSublayers(sublayersXmlNodes, jsonNode, converter);
             }
 
-            XmlNode attributesXmlNode = xmlNode.SelectSingleNode("Attributes");
+            XmlNode attributesXmlNode = layerNode.SelectSingleNode("Attributes");
             if(attributesXmlNode != null)
             {
-                XmlToJsonAttributes(attributesXmlNode, jsonNode);
+                JsonList layerAttributes = new JsonList();
+                XmlToJsonAttributes(attributesXmlNode, layerAttributes, converter);
+                jsonNode.Add("attributes", layerAttributes);
             }
         }
 
@@ -98,20 +118,23 @@ namespace Converter
             jsonNode.Add("sublayers", sublayersJsonNodes);
         }
 
-        static private void XmlToJsonAttributes(XmlNode xmlNode, JsonNode jsonNode)
+        static private void XmlToJsonAttributes(XmlNode attributesNode, JsonNode jsonNode, XmlToJsonConverter converter)
         {
-            JsonList layerAttributes = new JsonList();
-            foreach(XmlNode attributeXmlNode in xmlNode.ChildNodes)
+            foreach(XmlNode attributeXmlNode in attributesNode.ChildNodes)
             {
                 JsonObject layerAttribute = new JsonObject();
-                XmlAttributeCollection xmlAttributes = attributeXmlNode.Attributes;
-                string name = xmlAttributes.GetNamedItem("name").InnerText;
-                string type = xmlAttributes.GetNamedItem("type").InnerText;
-                layerAttribute.Add("name", new JsonValue(name));
-                layerAttribute.Add("type", new JsonValue(type));
-                layerAttributes.Add(layerAttribute);
+                converter.Convert(attributeXmlNode, layerAttribute);
+                jsonNode.Add(layerAttribute);
             }
-            jsonNode.Add("attributes", layerAttributes);
+        }
+
+        static private void XmlToJsonAttribute(XmlNode attributeNode, JsonNode jsonNode, XmlToJsonConverter converter)
+        {
+            XmlAttributeCollection xmlAttributes = attributeNode.Attributes;
+            string name = xmlAttributes.GetNamedItem("name").InnerText;
+            string type = xmlAttributes.GetNamedItem("type").InnerText;
+            jsonNode.Add("name", new JsonValue(name));
+            jsonNode.Add("type", new JsonValue(type));
         }
     }
 }
